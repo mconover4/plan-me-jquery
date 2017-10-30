@@ -37,6 +37,24 @@
 				</div>
 			</div>
 
-			<a href="#" class="js-next" data-id="<%=@trip.id%>">Next</a>
+			<button class="js-trips" data-id="<%= @user.id %>">Show Trips</button>
 		</div>
 </section>
+
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+	$(".js-trips").on("click", function() {
+		var id = $(this).data("id");
+		$.get("/users/" + id + ".json", function(data) {
+			var description = "<p>" + data["description"] + "</p><p>" + inventoryText + "</p><ul>";
+			const trips = data["trips"];
+			for (var i=0; i < trips.length; i++) {
+				const trip = trips[i];
+				description += "<li>" + trip["id"] + " - " + trip["categories"] + "</li>";
+			}
+			description += "</ul>";
+			$("#user-" + id).html(description);
+		});
+	});
+	});
+</script>
