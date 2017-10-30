@@ -15,8 +15,10 @@
       <td><%= link_to "Edit", edit_trip_path(@trip) %> | <%= link_to 'Delete', @trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
 
+    <button class="load_comments"> Load Comments </button>
+
     <div class="comments">
-      <%= render 'comments/comments' %>
+      <%= render 'comments/comments', locals: {comments: @comments}  %>
     </div>
 
     <%= form_for(@comment, :url => trip_comments_path(@trip)) do |f|  %>

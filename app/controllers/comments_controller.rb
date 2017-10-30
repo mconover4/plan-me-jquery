@@ -3,10 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @trip.comments
-    # It went to implicit rendering
-    # render :layout => false
-    # render :json => @comments
-    # render :layout => false
+
     respond_to do |format|
       format.html {render 'index.html', :layout => false}
       format.js {render 'index.js', :layout => false}
@@ -19,7 +16,7 @@ class CommentsController < ApplicationController
       # I need to render something that just has the LI I want...
       # why not just create a comments/show view that shows the LI of one comment?
       # render 'comments/show', :layout => false
-      render 'create.js', :layout => false
+      redirect_to @trip
     else
       render "trips/show"
     end
