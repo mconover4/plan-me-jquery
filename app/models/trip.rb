@@ -1,5 +1,6 @@
 class Trip <  ActiveRecord::Base
   belongs_to :user
+  has_many :comments
   has_many :trip_categories
   has_many :categories, through: :trip_categories
   accepts_nested_attributes_for :categories, reject_if: :all_blank

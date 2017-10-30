@@ -1,6 +1,7 @@
 class User <  ActiveRecord::Base
   ROLES = %w[admin planner goer].freeze
   has_many :trips
+  has_many :comments
   has_many :trip_categories, through: :trips
   accepts_nested_attributes_for :trips
 

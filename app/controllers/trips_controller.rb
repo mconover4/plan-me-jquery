@@ -24,6 +24,8 @@ class TripsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments
+    @comment = Comment.new # @post.comments.build
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @trip}
