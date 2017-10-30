@@ -24,6 +24,10 @@ class TripsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @trip}
+    end
   end
 
   def edit
@@ -59,9 +63,4 @@ class TripsController < ApplicationController
   def set_trip
     @trip = Trip.find(params[:id])
   end
-
-  def require_planner
-     return head(:forbidden) unless current_user.role == 'planner' || current_user.role == 'admin'
-   end
-
-end
+end 
