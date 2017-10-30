@@ -22,6 +22,12 @@ class CommentsController < ApplicationController
     end
   end
 
+ def destroy
+   @comment = Comment.find(params[:id])
+   @comment.destroy
+   render json: @comment
+ end
+
 
   private
     def set_trip
@@ -29,6 +35,6 @@ class CommentsController < ApplicationController
     end
 
     def comments_params
-      params.require(:comment).permit(:content, :user)
+      params.require(:comment).permit(:content, :trip_id, :user_id)
     end
 end

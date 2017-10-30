@@ -21,6 +21,7 @@
       <%= render 'comments/comments'%>
     </div>
 
+
     <%= form_for(@comment, :url => trip_comments_path(@trip)) do |f|  %>
     <%= f.text_area :content %>
 
