@@ -18,7 +18,7 @@
     <button class="load_comments"> Load Comments </button>
 
     <div class="comments">
-      <%= render 'comments/comments', locals: {comments: @comments}  %>
+      <%= render 'comments/comments'%>
     </div>
 
     <%= form_for(@comment, :url => trip_comments_path(@trip)) do |f|  %>
