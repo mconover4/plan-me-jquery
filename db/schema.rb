@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025025148) do
+ActiveRecord::Schema.define(version: 20171030202936) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "trip_id"
   end
 
   create_table "trip_categories", force: :cascade do |t|
