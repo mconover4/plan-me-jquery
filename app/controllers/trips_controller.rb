@@ -12,7 +12,7 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.create(trip_params)
     @trip.user_id = current_user.id
     if @trip.save
       flash[:notice] = "#{@trip.name.capitalize} was successfully created!"

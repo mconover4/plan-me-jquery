@@ -46,3 +46,18 @@ $(function() {
       e.preventDefault();
     })
   });
+
+  $(function() {
+     $('form').submit(function(event) {
+       event.preventDefault();
+       var values = $(this).serialize();
+       var posting = $.post('/products', values);
+       posting.done(function(data) {
+         var product = data;
+         $("#productName").text(product["name"]);
+         $("#productPrice").text("$" + product["price"]);
+         $("#productDescription").text(product["description"]);
+         $("#productInventory").text(product["inventory"]);
+       });
+     });
+   });
